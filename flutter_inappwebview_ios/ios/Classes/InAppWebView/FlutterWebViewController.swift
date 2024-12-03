@@ -7,6 +7,7 @@
 
 import Foundation
 import WebKit
+import AdFitSDK
 
 public class FlutterWebViewController: NSObject, FlutterPlatformView, Disposable {
 
@@ -59,6 +60,7 @@ public class FlutterWebViewController: NSObject, FlutterPlatformView, Disposable
                                    configuration: preWebviewConfiguration,
                                    contextMenu: contextMenu,
                                    userScripts: userScripts)
+            AdFit.register(webView: webView!)
         }
         
         let pullToRefreshSettings = PullToRefreshSettings()
@@ -190,6 +192,7 @@ public class FlutterWebViewController: NSObject, FlutterPlatformView, Disposable
     public func dispose(removeFromSuperview: Bool) {
         if keepAliveId == nil {
             if let webView = webView() {
+                AdFit.unRegister(webView: webView)
                 webView.dispose()
                 if removeFromSuperview {
                     webView.removeFromSuperview()
