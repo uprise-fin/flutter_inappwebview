@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+import com.kakao.adfit.AdFitSdk;
+
 public class FlutterWebView implements PlatformWebView {
 
   static final String LOG_TAG = "IAWFlutterWebView";
@@ -65,6 +68,8 @@ public class FlutterWebView implements PlatformWebView {
 
     webView = new InAppWebView(context, plugin, id, windowId, customSettings, contextMenu, 
             customSettings.useHybridComposition ? null : plugin.flutterView, userScripts);
+    AdFitSdk.register(webView);
+
     displayListenerProxy.onPostWebViewInitialization(displayManager);
 
     // set MATCH_PARENT layout params to the WebView, otherwise it won't take all the available space!

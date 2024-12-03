@@ -16,6 +16,7 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 
@@ -53,5 +54,6 @@ android {
         implementation 'androidx.browser:browser:1.6.0'
         implementation 'androidx.appcompat:appcompat:1.6.1'
         implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+        implementation "com.kakao.adfit:ads-base:3.17.2"
     }
 }
